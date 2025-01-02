@@ -1,5 +1,6 @@
 import pandas as pd
 import jsonschema
+import json
 from jsonschema import validate
 from typing import Dict, Any
 
@@ -21,6 +22,23 @@ def read_csv(file_path: str) -> pd.DataFrame:
         return pd.read_csv(file_path)
     except Exception as e:
         raise ValueError(f"Error reading CSV file: {e}")
+ 
+def read_schema(file_name: str) -> Dict[str, Any]:
+    """
+    Reads a JSON schema file and returns a dictionary.
+
+    Args:
+        file_name (str): Name of the file for which to read the schema.
+
+    Returns:
+        Dict[str, Any]: Dictionary containing the schema for the given file.
+
+    Raises:
+        ValueError: If there is an error reading the schema file.
+    """
+    file_schema_path = f"./data/schemas/{file_name}_schema.json"
+    with open(file_schema_path, "r") as f:
+        return json.load(f) 
 
 def read_json(file_path: str) -> pd.DataFrame:
     """
