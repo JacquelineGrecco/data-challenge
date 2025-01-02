@@ -1,0 +1,36 @@
+{
+    "type": "object",
+    "properties": {
+        "event": {
+            "type": "object",
+            "properties": {
+                "name": {"type": "string"},
+                "timestamp": {"type": "string", "format": "date-time"}
+            },
+            "required": ["name", "timestamp"]
+        },
+        "user": {
+            "type": "object",
+            "properties": {
+                "id": {"type": "string"}
+            },
+            "required": ["id"]
+        },
+        "allowance": {
+            "type": "object",
+            "properties": {
+                "amount": {"type": "number"},
+                "scheduled": {
+                    "type": "object",
+                    "properties": {
+                        "frequency": {"type": "string"},
+                        "day": {"type": "string"}
+                    },
+                    "required": ["frequency", "day"]
+                }
+            },
+            "required": ["amount", "scheduled"]
+        }
+    },
+    "required": ["event", "user", "allowance"]
+}
